@@ -34,11 +34,29 @@ function SuccessMessage({
 export function CourierFormPage({ locale }: { locale: Locale }) {
   const ar = locale === "ar";
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setSubmitting(true);
+    setError("");
+    const data = Object.fromEntries(new FormData(event.currentTarget));
+
+    try {
+      const response = await fetch("/api/courier-applications", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ ...data, locale }),
+      });
+      if (!response.ok) throw new Error("submission_failed");
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setError(ar ? "تعذر إرسال الطلب الآن. حاول مرة أخرى بعد قليل." : "We couldn’t send the application. Please try again shortly.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -110,11 +128,12 @@ export function CourierFormPage({ locale }: { locale: Locale }) {
                     <input name="email" type="email" autoComplete="email" required placeholder="name@example.com" />
                   </label>
                   <label className="checkbox-label">
-                    <input type="checkbox" required />
+                    <input name="consent" type="checkbox" required />
                     <span>{ar ? "أوافق على استخدام بياناتي للتحقق والتواصل بشأن طلب الانضمام." : "I agree that my details may be used for verification and application updates."}</span>
                   </label>
-                  <button className="button button-primary form-submit" type="submit">
-                    {ar ? "إرسال طلب الانضمام" : "Send application"} <span aria-hidden="true">→</span>
+                  {error && <p className="form-error" role="alert">{error}</p>}
+                  <button className="button button-primary form-submit" type="submit" disabled={submitting}>
+                    {submitting ? (ar ? "جارٍ الإرسال..." : "Sending...") : (ar ? "إرسال طلب الانضمام" : "Send application")} <span aria-hidden="true">→</span>
                   </button>
                 </form>
               )}
@@ -130,11 +149,29 @@ export function CourierFormPage({ locale }: { locale: Locale }) {
 export function ContactFormPage({ locale }: { locale: Locale }) {
   const ar = locale === "ar";
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setSubmitting(true);
+    setError("");
+    const data = Object.fromEntries(new FormData(event.currentTarget));
+
+    try {
+      const response = await fetch("/api/contact-messages", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ ...data, locale }),
+      });
+      if (!response.ok) throw new Error("submission_failed");
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setError(ar ? "تعذر إرسال الرسالة الآن. حاول مرة أخرى بعد قليل." : "We couldn’t send your message. Please try again shortly.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -195,8 +232,9 @@ export function ContactFormPage({ locale }: { locale: Locale }) {
                     <span>{ar ? "رسالتك" : "Your message"}</span>
                     <textarea name="message" required rows={6} placeholder={ar ? "أخبرنا كيف يمكننا مساعدتك..." : "Tell us how we can help..."} />
                   </label>
-                  <button className="button button-primary form-submit" type="submit">
-                    {ar ? "إرسال الرسالة" : "Send message"} <span aria-hidden="true">→</span>
+                  {error && <p className="form-error" role="alert">{error}</p>}
+                  <button className="button button-primary form-submit" type="submit" disabled={submitting}>
+                    {submitting ? (ar ? "جارٍ الإرسال..." : "Sending...") : (ar ? "إرسال الرسالة" : "Send message")} <span aria-hidden="true">→</span>
                   </button>
                 </form>
               )}
