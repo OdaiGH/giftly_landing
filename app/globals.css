@@ -108,71 +108,115 @@ summary:focus-visible {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--display);
-  font-size: 17px;
-  letter-spacing: 0.04em;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -.075em;
+  line-height: 1;
+}
+
+.wordmark > span {
+  display: inline-block;
+  margin-inline-start: 1px;
+  color: var(--lavender);
+  transform: rotate(-7deg) translateY(1px);
 }
 
 .logo-mark {
   position: relative;
-  width: 33px;
-  height: 33px;
+  width: 38px;
+  height: 38px;
   display: inline-block;
-  transform: rotate(-2deg);
-}
-
-.logo-mark::before,
-.logo-mark::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  width: 16px;
-  height: 16px;
-  background: var(--lavender);
-  border-radius: 12px 12px 4px 12px;
+  flex: 0 0 auto;
 }
 
 .logo-mark::before {
-  left: 0;
-  transform: rotate(35deg);
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 5px;
+  bottom: 0;
+  border: 5px solid var(--lavender);
+  border-right-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-16deg);
 }
 
 .logo-mark::after {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 5px;
   right: 0;
-  transform: rotate(55deg) scaleX(-1);
+  bottom: 12px;
+  border-radius: 6px;
+  background: var(--lavender);
+  transform: rotate(-5deg);
 }
 
 .logo-mark i,
 .logo-mark b {
   position: absolute;
-  z-index: 2;
+  display: block;
 }
 
 .logo-mark i {
-  width: 10px;
-  height: 10px;
+  z-index: 3;
+  width: 9px;
+  height: 9px;
+  left: 14px;
+  top: 7px;
   background: var(--coral);
-  border: 3px solid var(--cream);
-  border-radius: 50%;
-  left: 12px;
-  top: 10px;
+  border: 2px solid var(--cream);
+  border-radius: 7px 7px 3px 7px;
+  transform: rotate(45deg);
 }
 
 .logo-mark b {
-  width: 18px;
-  height: 15px;
-  background: var(--lavender);
-  border-radius: 2px 3px 11px 3px;
-  left: 8px;
-  top: 18px;
-  transform: rotate(45deg);
-  z-index: 0;
+  z-index: 1;
+  inset: 0;
+}
+
+.logo-mark b::before,
+.logo-mark b::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  top: 1px;
+  border: 4px solid var(--lavender);
+  border-radius: 12px 12px 4px 12px;
+}
+
+.logo-mark b::before {
+  left: 2px;
+  transform: rotate(26deg);
+}
+
+.logo-mark b::after {
+  right: 2px;
+  transform: rotate(-26deg) scaleX(-1);
 }
 
 .logo-mark.tiny {
   transform: scale(0.62);
   margin: -6px;
+}
+
+.mini-wordmark {
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: -.06em;
 }
 
 nav {

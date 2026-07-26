@@ -2,12 +2,12 @@ export type Locale = "ar" | "en";
 
 export function Logo({ locale }: { locale: Locale }) {
   return (
-    <a className="logo" href={locale === "ar" ? "/ar" : "/en"} aria-label="SAFE-GIFT">
+    <a className="logo" href={locale === "ar" ? "/ar" : "/en"} aria-label="Giftly">
       <span className="logo-mark" aria-hidden="true">
         <i />
         <b />
       </span>
-      <span>SAFE-GIFT</span>
+      <span className="wordmark">Giftl<span>y</span></span>
     </a>
   );
 }
@@ -63,7 +63,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </div>
         <div className="footer-meta">
           <span>{ar ? "صُنع بعناية في المملكة العربية السعودية" : "Made with care in Saudi Arabia"}</span>
-          <span>© 2026 SAFE-GIFT</span>
+          <span>© 2026 Giftly</span>
         </div>
       </div>
     </footer>

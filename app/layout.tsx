@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "SAFE-GIFT — اطلب أي هدية، وثق بأنها ستصل";
+const title = "Giftly — اطلب أي هدية، وثق بأنها ستصل";
 const description =
   "أرسل هدايا شخصية داخل السعودية مع مندوبين موثّقين، دفع محمي، وإثبات توصيل بالصورة والموقع.";
 
@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol =
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
-  const socialImage = `${protocol}://${host}/og-ar.png`;
+  const socialImage = `${protocol}://${host}/giftly-brand.png`;
 
   return {
     title,
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "custom gifts",
       "Riyadh",
       "Jeddah",
-      "SAFE-GIFT",
+      "Giftly",
     ],
     openGraph: {
       title,
@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: socialImage,
           width: 1733,
           height: 909,
-          alt: "SAFE-GIFT — اطلب أي هدية، وثق بأنها ستصل",
+          alt: "Giftly — اطلب أي هدية، وثق بأنها ستصل",
         },
       ],
     },

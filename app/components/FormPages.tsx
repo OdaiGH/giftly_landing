@@ -18,8 +18,8 @@ function SuccessMessage({
       <p>
         {courier
           ? ar
-            ? "شكراً لانضمامك. سيراجع فريق SAFE-GIFT بياناتك ويتواصل معك قريباً لاستكمال التحقق."
-            : "Thanks for joining. The SAFE-GIFT team will review your details and contact you soon to complete verification."
+            ? "شكراً لانضمامك. سيراجع فريق Giftly بياناتك ويتواصل معك قريباً لاستكمال التحقق."
+            : "Thanks for joining. The Giftly team will review your details and contact you soon to complete verification."
           : ar
             ? "شكراً لتواصلك معنا. سيرد عليك فريقنا خلال يوم عمل."
             : "Thanks for reaching out. Our team will reply within one business day."}
@@ -66,7 +66,7 @@ export function CourierFormPage({ locale }: { locale: Locale }) {
         <section className="subpage-hero">
           <div className="section-shell form-page-grid">
             <div className="form-intro">
-              <span className="kicker">{ar ? "انضم إلى مجتمع SAFE-GIFT" : "Join the SAFE-GIFT community"}</span>
+              <span className="kicker">{ar ? "انضم إلى مجتمع Giftly" : "Join the Giftly community"}</span>
               <h1>{ar ? "اصنع لحظة جميلة. واكسب بطريقتك." : "Make a beautiful moment. Earn your way."}</h1>
               <p>
                 {ar
@@ -191,7 +191,7 @@ export function ContactFormPage({ locale }: { locale: Locale }) {
               <div className="contact-mini-list">
                 <div><span>⌖</span><p><strong>{ar ? "الفرع" : "Branch"}</strong><small>{ar ? "الرياض، المملكة العربية السعودية — بالموعد" : "Riyadh, Saudi Arabia — visits by appointment"}</small></p></div>
                 <div><span>◷</span><p><strong>{ar ? "ساعات العمل" : "Working hours"}</strong><small>{ar ? "الأحد–الخميس · ٩ ص–٦ م" : "Sunday–Thursday · 9 AM–6 PM"}</small></p></div>
-                <div><span>＠</span><p><strong>{ar ? "البريد" : "Email"}</strong><small>hello@safe-gift.sa</small></p></div>
+                <div><span>＠</span><p><strong>{ar ? "البريد" : "Email"}</strong><small>hello@giftly.sa</small></p></div>
               </div>
             </div>
             <div className="form-card">

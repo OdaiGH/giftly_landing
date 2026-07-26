@@ -9,12 +9,12 @@ export function AboutPage({ locale }: { locale: Locale }) {
         <SiteHeader locale={locale} />
         <section className="about-hero">
           <div className="section-shell">
-            <span className="kicker">{ar ? "عن SAFE-GIFT" : "About SAFE-GIFT"}</span>
+            <span className="kicker">{ar ? "عن Giftly" : "About Giftly"}</span>
             <h1>{ar ? "نحن نبني الثقة حول الهدية." : "We build trust around the gift."}</h1>
             <p>
               {ar
-                ? "SAFE-GIFT ليست تطبيق توصيل ولا متجر هدايا جاهز. إنها مساحة آمنة تحول فكرتك الشخصية إلى هدية حقيقية تصل لمن تحب."
-                : "SAFE-GIFT isn’t a delivery app or a fixed gift catalog. It’s a safe layer that turns your personal idea into a real gift that reaches someone you care about."}
+                ? "Giftly ليست تطبيق توصيل ولا متجر هدايا جاهز. إنها مساحة آمنة تحول فكرتك الشخصية إلى هدية حقيقية تصل لمن تحب."
+                : "Giftly isn’t a delivery app or a fixed gift catalog. It’s a safe layer that turns your personal idea into a real gift that reaches someone you care about."}
             </p>
           </div>
         </section>
@@ -39,7 +39,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
             <div className="visit-cards">
               <article><span>⌖</span><div><small>{ar ? "موقع الفرع" : "Branch location"}</small><strong>{ar ? "الرياض، المملكة العربية السعودية" : "Riyadh, Saudi Arabia"}</strong><p>{ar ? "الزيارات بالموعد المسبق" : "Visits by prior appointment"}</p></div></article>
               <article><span>◷</span><div><small>{ar ? "ساعات العمل" : "Working hours"}</small><strong>{ar ? "الأحد إلى الخميس" : "Sunday to Thursday"}</strong><p>{ar ? "٩:٠٠ ص – ٦:٠٠ م" : "9:00 AM – 6:00 PM"}</p></div></article>
-              <article><span>＠</span><div><small>{ar ? "البريد الإلكتروني" : "Email address"}</small><strong>hello@safe-gift.sa</strong><p>{ar ? "نرد خلال يوم عمل" : "Replies within one business day"}</p></div></article>
+              <article><span>＠</span><div><small>{ar ? "البريد الإلكتروني" : "Email address"}</small><strong>hello@giftly.sa</strong><p>{ar ? "نرد خلال يوم عمل" : "Replies within one business day"}</p></div></article>
             </div>
             <a className="button button-secondary" href={`${base}/contact`}>{ar ? "أرسل لنا رسالة" : "Send us a message"} <span>→</span></a>
           </div>

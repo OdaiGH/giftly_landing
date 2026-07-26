@@ -36,10 +36,10 @@ const copy = {
     safetyTitle: "مالك ينتظر.",
     safetyAccent: "هديتك لا تنتظر.",
     safetyText:
-      "لن تدفع لشخص مجهول بلا ضمان. تحتفظ SAFE-GIFT بالمبلغ أثناء التسوق والتجهيز والتوصيل، ولا تحوّله إلا بعد إثبات الوصول.",
+      "لن تدفع لشخص مجهول بلا ضمان. تحتفظ Giftly بالمبلغ أثناء التسوق والتجهيز والتوصيل، ولا تحوّله إلا بعد إثبات الوصول.",
     protected: "محمي حتى تأكيد التوصيل",
     noProof: "لا إثبات، لا تحويل.",
-    boardTitle: "حماية SAFE-GIFT",
+    boardTitle: "حماية Giftly",
     active: "نشطة",
     giftPayment: "قيمة الهدية",
     held: "محفوظة بأمان",
@@ -76,11 +76,11 @@ const copy = {
       ["هل يمكنني طلب أي هدية؟", "نعم، اكتب الهدية النظامية التي تريدها بلغتك العادية. يؤكد المندوب ما يمكن توفيره ويرسل فاتورة مفصلة قبل الدفع."],
       ["متى يستلم المندوب المبلغ؟", "بعد وصول الهدية وتأكيدها بصورة عند الباب وتحقق بالموقع. حتى ذلك الحين تبقى دفعتك محمية."],
       ["ماذا لو أردت تعديل تفصيل؟", "تواصل مع المندوب داخل التطبيق قبل الشراء. ستراجع دائماً الفاتورة النهائية وتوافق عليها."],
-      ["أين تتوفر SAFE-GIFT؟", "نبدأ في الرياض وجدة، وسنضيف مدناً سعودية أخرى مع نمو مجتمع المندوبين."],
+      ["أين تتوفر Giftly؟", "نبدأ في الرياض وجدة، وسنضيف مدناً سعودية أخرى مع نمو مجتمع المندوبين."],
     ],
     downloadKicker: "صُمم لأصحاب القلوب",
     downloadTitle: "من تحب يستحق المفاجأة.",
-    downloadText: "حمّل SAFE-GIFT واصنع يومهم الجميل أينما كنت.",
+    downloadText: "حمّل Giftly واصنع يومهم الجميل أينما كنت.",
     appleLabel: "حمّل من",
     apple: "App Store",
     android: "نسخة Android وGoogle Play قريباً",
@@ -90,7 +90,7 @@ const copy = {
     title: "Ask for anything.",
     titleAccent: "Trust that it’ll show up.",
     lede:
-      "Describe the gift you imagine. A verified local courier makes it happen, while SAFE-GIFT protects your payment until it reaches the door.",
+      "Describe the gift you imagine. A verified local courier makes it happen, while Giftly protects your payment until it reaches the door.",
     primary: "Send a thoughtful gift",
     secondary: "See how it works",
     trust: ["ID-verified couriers", "Protected payment", "GPS delivery proof"],
@@ -120,10 +120,10 @@ const copy = {
     safetyTitle: "Your money waits.",
     safetyAccent: "Your gift doesn’t.",
     safetyText:
-      "You never send money into the unknown. SAFE-GIFT holds it safely while your courier shops, prepares, and delivers—then releases it only after the doorstep is verified.",
+      "You never send money into the unknown. Giftly holds it safely while your courier shops, prepares, and delivers—then releases it only after the doorstep is verified.",
     protected: "Protected until “delivered”",
     noProof: "No proof, no payout.",
-    boardTitle: "SAFE-GIFT protection",
+    boardTitle: "Giftly protection",
     active: "Active",
     giftPayment: "Gift payment",
     held: "Held safely",
@@ -160,11 +160,11 @@ const copy = {
       ["Can I really ask for any kind of gift?", "Yes—describe the thoughtful, legal item you want in plain language. Your courier confirms what they can source and sends an itemized invoice before you pay."],
       ["When does the courier receive my money?", "Only after the gift is delivered and confirmed with doorstep photo and GPS proof. Until then, your payment stays protected."],
       ["What if I need to change a detail?", "Use in-app chat before the courier purchases the items. You will always see and approve the final invoice."],
-      ["Where is SAFE-GIFT available?", "We’re beginning with Riyadh and Jeddah, with more Saudi cities joining as the courier community grows."],
+      ["Where is Giftly available?", "We’re beginning with Riyadh and Jeddah, with more Saudi cities joining as the courier community grows."],
     ],
     downloadKicker: "Made for thoughtful people",
     downloadTitle: "Someone you love is worth the surprise.",
-    downloadText: "Download SAFE-GIFT and make their day—from wherever you are.",
+    downloadText: "Download Giftly and make their day—from wherever you are.",
     appleLabel: "Download on the",
     apple: "App Store",
     android: "Android and Google Play are coming later",
@@ -198,7 +198,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
             <div className="orbit orbit-one" /><div className="orbit orbit-two" />
             <div className="phone">
               <div className="phone-top">
-                <div className="mini-logo"><span className="logo-mark tiny" aria-hidden="true"><i /><b /></span>SAFE-GIFT</div>
+                <div className="mini-logo"><span className="logo-mark tiny" aria-hidden="true"><i /><b /></span><span className="mini-wordmark">Giftly</span></div>
                 <span className="avatar">SA</span>
               </div>
               <div className="request-label">{c.requestLabel}</div>
