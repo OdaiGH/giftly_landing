@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "SAFE-GIFT — Ask for anything. Trust that it’ll show up.";
+const title = "SAFE-GIFT — اطلب أي هدية، وثق بأنها ستصل";
 const description =
-  "Send thoughtful, custom gifts across Saudi Arabia with verified couriers, protected payment, and GPS-verified doorstep proof.";
+  "أرسل هدايا شخصية داخل السعودية مع مندوبين موثّقين، دفع محمي، وإثبات توصيل بالصورة والموقع.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -15,12 +15,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol =
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
-  const socialImage = `${protocol}://${host}/og.png`;
+  const socialImage = `${protocol}://${host}/og-ar.png`;
 
   return {
     title,
     description,
     keywords: [
+      "هدايا السعودية",
       "Saudi Arabia gifting",
       "gift delivery",
       "custom gifts",
@@ -37,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: socialImage,
           width: 1733,
           height: 909,
-          alt: "SAFE-GIFT — Ask for anything. Trust that it’ll show up.",
+          alt: "SAFE-GIFT — اطلب أي هدية، وثق بأنها ستصل",
         },
       ],
     },
@@ -56,8 +57,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
+      <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(()=>{const en=location.pathname==='/en'||location.pathname.startsWith('/en/');document.documentElement.lang=en?'en':'ar';document.documentElement.dir=en?'ltr':'rtl'})()",
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
