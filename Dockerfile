@@ -1,4 +1,6 @@
-FROM node:24-alpine
+# Wrangler's bundled Cloudflare workerd binary needs glibc at runtime.
+# Use Debian slim rather than Alpine (musl) so the binary can start.
+FROM node:24-bookworm-slim
 
 WORKDIR /app
 
