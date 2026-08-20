@@ -198,7 +198,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
             <div className="orbit orbit-one" /><div className="orbit orbit-two" />
             <div className="phone">
               <div className="phone-top">
-                <div className="mini-logo"><span className="brand-logo brand-logo-on-light brand-logo-mini" aria-hidden="true" /></div>
+                <div className="mini-logo"><img className="brand-logo-image brand-logo-image-mini" src="/giftly-logo-purple.png" alt="" /></div>
                 <span className="avatar">SA</span>
               </div>
               <div className="request-label">{c.requestLabel}</div>

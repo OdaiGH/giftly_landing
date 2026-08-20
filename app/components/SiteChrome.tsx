@@ -3,7 +3,7 @@ export type Locale = "ar" | "en";
 export function Logo({ locale }: { locale: Locale }) {
   return (
     <a className="logo" href={locale === "ar" ? "/ar" : "/en"} aria-label="Giftly">
-      <span className="brand-logo brand-logo-on-light" aria-hidden="true" />
+      <img className="brand-logo-image" src="/giftly-logo-purple.png" alt="" />
     </a>
   );
 }

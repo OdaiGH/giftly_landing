@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol =
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
-  const socialImage = `${protocol}://${host}/giftly-logo-on-light.jpg`;
+  const socialImage = `${protocol}://${host}/giftly-logo-purple.png`;
 
   return {
     title,
@@ -36,8 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [
         {
           url: socialImage,
-          width: 1000,
-          height: 1000,
+          width: 418,
+          height: 382,
           alt: "Giftly — اطلب أي هدية، وثق بأنها ستصل",
         },
       ],

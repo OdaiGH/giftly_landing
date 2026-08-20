@@ -23,6 +23,14 @@ test("Arabic landing page presents the revised trust and Android copy", async ()
   assert.match(html, /نسخة Android — الإطلاق المتوقع خلال شهر/);
 });
 
+test("Arabic landing page renders the official supplied logo image", async () => {
+  const response = await render("/ar");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /<img[^>]+src="\/giftly-logo-purple\.png"[^>]*alt=""/);
+});
+
 test("contact page exposes the official email and mobile numbers", async () => {
   const response = await render("/ar/contact");
   assert.equal(response.status, 200);

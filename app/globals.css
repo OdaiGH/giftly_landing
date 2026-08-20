@@ -108,34 +108,16 @@ summary:focus-visible {
 .logo {
   display: inline-flex;
   align-items: center;
-  width: 146px;
-  height: 78px;
 }
 
-.brand-logo {
-  width: 100%;
-  height: 100%;
+.brand-logo-image {
+  width: 82px;
+  height: auto;
   display: block;
-  background-repeat: no-repeat;
-  background-position: center 53%;
-  background-size: 310px auto;
 }
 
-.brand-logo-on-light {
-  background-image: url("/giftly-logo-on-light.jpg");
-}
-
-.brand-logo-on-lavender {
-  background-image: url("/giftly-logo-on-lavender.png");
-  background-size: 250px auto;
-  background-position: center 52%;
-}
-
-.brand-logo-mini {
-  width: 78px;
-  height: 40px;
-  background-size: 166px auto;
-  background-position: center 53%;
+.brand-logo-image-mini {
+  width: 48px;
 }
 
 .wordmark {
@@ -2423,18 +2405,16 @@ footer {
   }
 
   .logo {
-    width: 120px;
-    height: 64px;
+    width: auto;
+    height: auto;
   }
 
-  .brand-logo {
-    background-size: 255px auto;
+  .brand-logo-image {
+    width: 70px;
   }
 
-  .brand-logo-mini {
-    width: 68px;
-    height: 35px;
-    background-size: 144px auto;
+  .brand-logo-image-mini {
+    width: 42px;
   }
 
   .nav-cta {
