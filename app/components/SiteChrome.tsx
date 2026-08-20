@@ -3,11 +3,7 @@ export type Locale = "ar" | "en";
 export function Logo({ locale }: { locale: Locale }) {
   return (
     <a className="logo" href={locale === "ar" ? "/ar" : "/en"} aria-label="Giftly">
-      <span className="logo-mark" aria-hidden="true">
-        <i />
-        <b />
-      </span>
-      <span className="wordmark">Giftl<span>y</span></span>
+      <span className="brand-logo brand-logo-on-light" aria-hidden="true" />
     </a>
   );
 }
@@ -60,9 +56,14 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <a href={`${base}/about`}>{ar ? "من نحن" : "About us"}</a>
           <a href={`${base}/couriers`}>{ar ? "انضم كمندوب" : "For couriers"}</a>
           <a href={`${base}/contact`}>{ar ? "تواصل معنا" : "Contact us"}</a>
+          <a href="/privacy">{ar ? "سياسة الخصوصية" : "Privacy policy"}</a>
+          <a href="/terms">{ar ? "الشروط والأحكام" : "Terms & conditions"}</a>
         </div>
         <div className="footer-meta">
           <span>{ar ? "صُنع بعناية في المملكة العربية السعودية" : "Made with care in Saudi Arabia"}</span>
+          <span>{ar ? "شركة الأثر المبتكر · السجل التجاري: 7054298489" : "شركة الأثر المبتكر · Commercial Registration: 7054298489"}</span>
+          <a href="mailto:bsm.am2025@outlook.com" dir="ltr">bsm.am2025@outlook.com</a>
+          <a href="tel:0553111551" dir="ltr">0553111551 / 0555025551</a>
           <span>© 2026 Giftly</span>
         </div>
       </div>

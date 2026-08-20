@@ -191,7 +191,8 @@ export function ContactFormPage({ locale }: { locale: Locale }) {
               <div className="contact-mini-list">
                 <div><span>⌖</span><p><strong>{ar ? "الفرع" : "Branch"}</strong><small>{ar ? "الرياض، المملكة العربية السعودية — بالموعد" : "Riyadh, Saudi Arabia — visits by appointment"}</small></p></div>
                 <div><span>◷</span><p><strong>{ar ? "ساعات العمل" : "Working hours"}</strong><small>{ar ? "الأحد–الخميس · ٩ ص–٦ م" : "Sunday–Thursday · 9 AM–6 PM"}</small></p></div>
-                <div><span>＠</span><p><strong>{ar ? "البريد" : "Email"}</strong><small>hello@giftly.sa</small></p></div>
+                <div><span>＠</span><p><strong>{ar ? "البريد" : "Email"}</strong><small>bsm.am2025@outlook.com</small></p></div>
+                <div><span>☎</span><p><strong>{ar ? "الجوال" : "Mobile"}</strong><small dir="ltr">0553111551 / 0555025551</small></p></div>
               </div>
             </div>
             <div className="form-card">

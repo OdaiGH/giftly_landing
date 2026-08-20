@@ -1,0 +1,44 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+async function render(path) {
+  return fetch(`http://localhost:3001${path}`, {
+    headers: { accept: "text/html" },
+  });
+}
+
+test("Arabic landing page presents the revised trust and Android copy", async () => {
+  const response = await render("/ar");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /اكتب وصف الهدية اللي تتخيلها بلغتك العادية/);
+  assert.match(html, /لا قوائم جامدة، ولا رسوم مفاجئة/);
+  assert.match(html, /من تحب ينتظر/);
+  assert.match(html, /هديتك ما لها انتظار/);
+  assert.match(html, /لطيفة في فكرتها. آمنة في كل خطوة/);
+  assert.match(html, /الكيكة ١٢٠ ر.س · الورد ٤٥ ر.س/);
+  assert.match(html, /تم التوصيل في حي الروضة/);
+  assert.match(html, /٩٥ ر.س/);
+  assert.match(html, /نسخة Android — الإطلاق المتوقع خلال شهر/);
+});
+
+test("contact page exposes the official email and mobile numbers", async () => {
+  const response = await render("/ar/contact");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /bsm\.am2025@outlook\.com/);
+  assert.match(html, /0553111551/);
+  assert.match(html, /0555025551/);
+});
+
+test("privacy and terms pages render the supplied legal terms", async () => {
+  const privacy = await render("/privacy");
+  assert.equal(privacy.status, 200);
+  assert.match(await privacy.text(), /تجمع Giftly البيانات الضرورية فقط لتنفيذ الطلب/);
+
+  const terms = await render("/terms");
+  assert.equal(terms.status, 200);
+  assert.match(await terms.text(), /إثبات توصيل \(صورة \+ تحقق موقع\)/);
+});

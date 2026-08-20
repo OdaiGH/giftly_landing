@@ -25,16 +25,16 @@ const copy = {
     ticker: ["كيكة عيد ميلاد", "ورد للاطمئنان", "مفاجأة ذكرى سنوية", "هدية مفضلة ونادرة", "سلة ترحيب"],
     processKicker: "من الفكرة إلى باب من تحب",
     processTitle: "أربع لحظات بسيطة. مفاجأة واحدة لا تُنسى.",
-    processIntro: "لا قوائم جامدة، ولا دفع عشوائي. أنت مطّلع ومتحكم في كل خطوة.",
+    processIntro: "لا قوائم جامدة، ولا رسوم مفاجئة.",
     steps: [
       ["٠١", "صِف الهدية", "اكتب ما تتخيله، اختر المدينة وحدد موعد التوصيل.", "كيكة شوكولاتة لأمي"],
-      ["٠٢", "وافق على الخطة", "يبحث مندوب موثّق عن الهدية ويرسل لك فاتورة واضحة.", "الكيكة ١٢٠ · الورد ٤٥ ر.س"],
+      ["٠٢", "وافق على الخطة", "يبحث مندوب موثّق عن الهدية ويرسل لك فاتورة واضحة.", "الكيكة ١٢٠ ر.س · الورد ٤٥ ر.س"],
       ["٠٣", "ادفع بأمان", "تبقى دفعتك محمية داخل التطبيق بينما يجهز المندوب الهدية.", "١٦٥ ر.س محفوظة بأمان"],
-      ["٠٤", "شاهدها تصل", "صورة عند الباب وتحقق بالموقع قبل تحويل المبلغ للمندوب.", "تم التوصيل في الروضة ✓"],
+      ["٠٤", "شاهدها تصل", "صورة عند الباب وتحقق بالموقع قبل تحويل المبلغ للمندوب.", "تم التوصيل في حي الروضة ✓"],
     ],
-    safetyKicker: "لطيف في فكرته. آمن في كل خطوة.",
-    safetyTitle: "مالك ينتظر.",
-    safetyAccent: "هديتك لا تنتظر.",
+    safetyKicker: "لطيفة في فكرتها. آمنة في كل خطوة.",
+    safetyTitle: "من تحب ينتظر.",
+    safetyAccent: "هديتك ما لها انتظار.",
     safetyText:
       "لن تدفع لشخص مجهول بلا ضمان. تحتفظ Giftly بالمبلغ أثناء التسوق والتجهيز والتوصيل، ولا تحوّله إلا بعد إثبات الوصول.",
     protected: "محمي حتى تأكيد التوصيل",
@@ -73,7 +73,7 @@ const copy = {
     faqKicker: "معلومات مهمة",
     faqTitle: "أسئلة سريعة، وإجابات واضحة.",
     faqs: [
-      ["هل يمكنني طلب أي هدية؟", "نعم، اكتب الهدية النظامية التي تريدها بلغتك العادية. يؤكد المندوب ما يمكن توفيره ويرسل فاتورة مفصلة قبل الدفع."],
+      ["هل يمكنني طلب أي هدية؟", "نعم، اكتب وصف الهدية اللي تتخيلها بلغتك العادية. يؤكد المندوب ما يمكن توفيره ويرسل فاتورة مفصلة قبل الدفع."],
       ["متى يستلم المندوب المبلغ؟", "بعد وصول الهدية وتأكيدها بصورة عند الباب وتحقق بالموقع. حتى ذلك الحين تبقى دفعتك محمية."],
       ["ماذا لو أردت تعديل تفصيل؟", "تواصل مع المندوب داخل التطبيق قبل الشراء. ستراجع دائماً الفاتورة النهائية وتوافق عليها."],
       ["أين تتوفر Giftly؟", "نبدأ في الرياض وجدة، وسنضيف مدناً سعودية أخرى مع نمو مجتمع المندوبين."],
@@ -83,7 +83,7 @@ const copy = {
     downloadText: "حمّل Giftly واصنع يومهم الجميل أينما كنت.",
     appleLabel: "حمّل من",
     apple: "App Store",
-    android: "نسخة Android وGoogle Play قريباً",
+    android: "نسخة Android — الإطلاق المتوقع خلال شهر",
   },
   en: {
     eyebrow: "Thoughtful gifting across Saudi Arabia",
@@ -198,7 +198,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
             <div className="orbit orbit-one" /><div className="orbit orbit-two" />
             <div className="phone">
               <div className="phone-top">
-                <div className="mini-logo"><span className="logo-mark tiny" aria-hidden="true"><i /><b /></span><span className="mini-wordmark">Giftly</span></div>
+                <div className="mini-logo"><span className="brand-logo brand-logo-on-light brand-logo-mini" aria-hidden="true" /></div>
                 <span className="avatar">SA</span>
               </div>
               <div className="request-label">{c.requestLabel}</div>
@@ -286,7 +286,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
               <div className="courier-head"><span className="courier-avatar big">M</span><span><small>{c.verifiedCourier}</small><strong>{ar ? "ماجد أ." : "Majed A."}</strong></span><i>✓</i></div>
               <div className="nearby-label">{c.nearby}</div>
               <div className="nearby-request"><span className="nearby-icon">♥</span><span><strong>{c.flowerRequest}</strong><small>{ar ? "٢٫٤ كم · الرياض" : "2.4 km · Riyadh"}</small></span><b>{ar ? "٨٥ ر.س" : "85 SAR"}</b></div>
-              <div className="nearby-request faded"><span className="nearby-icon">✦</span><span><strong>{c.basketRequest}</strong><small>{ar ? "٤٫١ كم · الرياض" : "4.1 km · Riyadh"}</small></span></div>
+              <div className="nearby-request faded"><span className="nearby-icon">✦</span><span><strong>{c.basketRequest}</strong><small>{ar ? "٤٫١ كم · الرياض" : "4.1 km · Riyadh"}</small></span><b>{ar ? "٩٥ ر.س" : "95 SAR"}</b></div>
             </div>
             <div className="earnings-pill"><small>{c.week}</small><strong>{ar ? "+ ٦٨٠ ر.س" : "+ 680 SAR"}</strong></div>
           </div>
