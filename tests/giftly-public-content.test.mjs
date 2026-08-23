@@ -41,6 +41,13 @@ test("site styles expose the sage accent color", async () => {
   assert.match(css, /--coral:\s*#4d9a73/i);
 });
 
+test("site styles preserve the supplied identity colors", async () => {
+  const css = await renderedStyles("/ar");
+
+  assert.match(css, /--lavender:\s*#c9aeec/i);
+  assert.match(css, /--cream:\s*#f8f7fd/i);
+});
+
 test("Arabic landing page presents the revised trust and Android copy", async () => {
   const response = await render("/ar");
   assert.equal(response.status, 200);
