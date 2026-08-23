@@ -7,6 +7,27 @@ async function render(path) {
   });
 }
 
+async function renderedStyles(path) {
+  const response = await render(path);
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  const stylesheet = html.match(/<link[^>]+href="([^"]+\.css[^"]*)"[^>]*>/)?.[1];
+  assert.ok(stylesheet, "expected the rendered page to load a stylesheet");
+
+  const css = await fetch(`http://localhost:3001${stylesheet}`).then((asset) => asset.text());
+  return css;
+}
+
+test("localized pages deliver Tajwal and Coiny as their site-wide fonts", async () => {
+  const css = await renderedStyles("/ar");
+
+  assert.match(css, /family=Tajawal:wght@200/);
+  assert.match(css, /family=Coiny/);
+  assert.match(css, /\.locale-shell\[lang=\\?"ar\\?"\][^{]*\{[^}]*--body:\s*\\?"Tajawal/);
+  assert.match(css, /\.locale-shell\[lang=\\?"en\\?"\][^{]*\{[^}]*--body:\s*\\?"Coiny/);
+});
+
 test("Arabic landing page presents the revised trust and Android copy", async () => {
   const response = await render("/ar");
   assert.equal(response.status, 200);

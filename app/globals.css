@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Coiny&family=Tajawal:wght@200&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -16,6 +17,20 @@
   --shadow: 0 30px 80px rgba(77, 46, 113, 0.16);
   --display: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
   --body: "Aptos", "Segoe UI", Tahoma, sans-serif;
+}
+
+.locale-shell[lang="ar"] {
+  --body: "Tajawal", sans-serif;
+  --display: "Tajawal", sans-serif;
+  font-family: var(--body);
+  font-synthesis: none;
+}
+
+.locale-shell[lang="en"] {
+  --body: "Coiny", cursive;
+  --display: "Coiny", cursive;
+  font-family: var(--body);
+  font-synthesis: none;
 }
 
 * {
@@ -1713,7 +1728,7 @@ footer {
 }
 
 .locale-shell[dir="rtl"] {
-  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+  font-family: var(--body);
 }
 
 .locale-shell[dir="rtl"] .hero h1,
@@ -1725,7 +1740,7 @@ footer {
 .locale-shell[dir="rtl"] .about-hero h1,
 .locale-shell[dir="rtl"] .form-intro h1,
 .locale-shell[dir="rtl"] .visit-grid h2 {
-  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+  font-family: var(--display);
   letter-spacing: -0.035em;
 }
 
