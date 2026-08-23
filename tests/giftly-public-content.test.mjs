@@ -48,6 +48,12 @@ test("site styles preserve the supplied identity colors", async () => {
   assert.match(css, /--cream:\s*#f8f7fd/i);
 });
 
+test("site styles keep supporting text legible on the identity palette", async () => {
+  const css = await renderedStyles("/ar");
+
+  assert.match(css, /--ink-soft:\s*#4b355b/i);
+});
+
 test("color palette card is published as a PNG asset", async () => {
   const response = await fetch("http://localhost:3001/giftly-color-palette.png");
 
