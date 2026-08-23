@@ -48,6 +48,13 @@ test("site styles preserve the supplied identity colors", async () => {
   assert.match(css, /--cream:\s*#f8f7fd/i);
 });
 
+test("color palette card is published as a PNG asset", async () => {
+  const response = await fetch("http://localhost:3001/giftly-color-palette.png");
+
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^image\/png\b/i);
+});
+
 test("Arabic landing page presents the revised trust and Android copy", async () => {
   const response = await render("/ar");
   assert.equal(response.status, 200);
