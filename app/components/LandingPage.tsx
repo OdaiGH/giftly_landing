@@ -304,7 +304,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
 
         <section className="download section-shell" id="download" aria-labelledby="download-title">
           <div className="download-inner">
-            <div className="download-burst burst-one" aria-hidden="true">✦</div><div className="download-burst burst-two" aria-hidden="true">♥</div>
+            <div className="download-burst burst-one" aria-hidden="true">✦</div>
             <div className="download-copy"><span className="kicker light">{c.downloadKicker}</span><h2 id="download-title">{c.downloadTitle}</h2><p>{c.downloadText}</p></div>
             <div className="download-actions apple-only">
               <a className="store-button" href="#" aria-label={c.apple}><span className="store-mark" aria-hidden="true">●</span><span><small>{c.appleLabel}</small><strong>{c.apple}</strong></span></a>

@@ -28,6 +28,19 @@ test("localized pages deliver Tajwal and Coiny as their site-wide fonts", async 
   assert.match(css, /\.locale-shell\[lang=\\?"en\\?"\][^{]*\{[^}]*--body:\s*\\?"Coiny/);
 });
 
+test("download section omits the heart decoration", async () => {
+  const response = await render("/ar");
+  assert.equal(response.status, 200);
+
+  assert.doesNotMatch(await response.text(), /class="download-burst burst-two"/);
+});
+
+test("site styles expose the sage accent color", async () => {
+  const css = await renderedStyles("/ar");
+
+  assert.match(css, /--coral:\s*#4d9a73/i);
+});
+
 test("Arabic landing page presents the revised trust and Android copy", async () => {
   const response = await render("/ar");
   assert.equal(response.status, 200);
