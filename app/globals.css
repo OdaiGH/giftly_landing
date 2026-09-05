@@ -1243,7 +1243,7 @@ nav a:hover,
   justify-content: space-between;
   border: 0;
   border-radius: 14px;
-  background: var(--lavender);
+  background: var(--lavender-dark);
   color: white;
   font-family: var(--body);
   font-size: 11px;
@@ -1339,6 +1339,67 @@ nav a:hover,
 .wallet-chip small {
   font-family: var(--body);
   font-size: 8px;
+}
+
+.testimonials {
+  padding: 30px 0 110px;
+}
+
+.testimonial-grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.testimonial-card {
+  position: relative;
+  min-height: 220px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed rgba(45, 23, 63, 0.28);
+  border-radius: 25px;
+  background: var(--lilac-soft);
+}
+
+.testimonial-placeholder-tag {
+  align-self: flex-start;
+  padding: 5px 10px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: var(--lilac);
+  color: var(--lavender-dark);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.testimonial-quote {
+  margin: 0;
+  flex: 1;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.testimonial-avatar {
+  width: 34px;
+  height: 34px;
+  margin-top: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lavender);
+  color: white;
+  font-family: var(--display);
+  font-size: 14px;
+}
+
+.testimonial-name {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
 .courier-section {
@@ -1626,9 +1687,9 @@ details[open] summary span {
 }
 
 .download-actions {
-  width: 215px;
+  width: 320px;
   display: grid;
-  gap: 10px;
+  gap: 14px;
 }
 
 .store-button {
@@ -1646,6 +1707,16 @@ details[open] summary span {
 .store-button:hover {
   transform: translateY(-2px);
   background: #1f102b;
+}
+
+.store-button-disabled {
+  cursor: not-allowed;
+  opacity: .82;
+}
+
+.store-button-disabled:hover {
+  transform: none;
+  background: var(--ink);
 }
 
 .store-button small,
@@ -1771,30 +1842,119 @@ footer {
   grid-column: span 3;
 }
 
-.download-actions.apple-only {
-  width: 240px;
+.android-interest {
+  padding: 16px 18px;
+  border: 1px solid rgba(45, 23, 63, .24);
+  border-radius: 16px;
+  color: var(--ink);
 }
 
-.android-later {
-  min-height: 52px;
-  padding: 10px 14px;
+.android-interest-head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 13px;
-  border: 1px solid rgba(45, 23, 63, .24);
-  border-radius: 14px;
-  color: rgba(45, 23, 63, .78);
-  font-size: 10px;
-  font-weight: 800;
-  text-align: start;
+  gap: 10px;
 }
 
-.android-later .play-mark {
+.android-interest-head .play-mark {
   transform: scale(.68);
   flex: 0 0 auto;
   opacity: .75;
   border-left-color: var(--lavender-dark);
+}
+
+.android-interest-head strong {
+  display: block;
+  font-size: 12px;
+}
+
+.android-interest-head small {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-soft);
+  font-size: 9px;
+}
+
+.android-interest-title {
+  display: block;
+  margin-top: 12px;
+  font-size: 11px;
+}
+
+.android-interest > p {
+  margin: 4px 0 10px;
+  color: var(--ink-soft);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.android-interest-form {
+  display: grid;
+  gap: 8px;
+}
+
+.android-interest-form input {
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(45, 23, 63, .18);
+  border-radius: 11px;
+  background: white;
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+  outline: none;
+}
+
+.android-interest-form input:focus {
+  border-color: var(--lavender);
+  box-shadow: 0 0 0 4px rgba(139,92,246,.11);
+}
+
+.android-interest-form button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--ink);
+  color: white;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.android-interest-form button:hover {
+  background: #1f102b;
+}
+
+.android-interest-form button:disabled {
+  cursor: wait;
+  opacity: .72;
+}
+
+.android-interest-error {
+  margin: 0;
+}
+
+.android-interest-success {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 11px;
+  background: var(--mint);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .subpage-hero {
@@ -2367,6 +2527,10 @@ footer {
     grid-column: span 3;
   }
 
+  .testimonial-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .courier-section {
     gap: 45px;
   }
@@ -2387,11 +2551,6 @@ footer {
 
   .download-actions {
     width: 100%;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .download-actions > small {
-    grid-column: 1 / -1;
   }
 
   .footer-grid {
@@ -2562,6 +2721,15 @@ footer {
   .wallet-card {
     grid-column: auto;
     min-height: 230px;
+  }
+
+  .testimonials {
+    padding-bottom: 90px;
+  }
+
+  .testimonial-grid {
+    margin-top: 35px;
+    grid-template-columns: 1fr;
   }
 
   .courier-section {
@@ -2768,10 +2936,6 @@ footer {
 
   .trust-grid-four .trust-card {
     grid-column: auto;
-  }
-
-  .download-actions.apple-only {
-    width: 100%;
   }
 
   .locale-shell[dir="rtl"] .hero-stage {

@@ -14,6 +14,13 @@ export const courierApplications = sqliteTable("courier_applications", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 
+export const androidInterest = sqliteTable("android_interest", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  contact: text("contact").notNull(),
+  locale: text("locale").notNull().default("ar"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+});
+
 export const contactMessages = sqliteTable("contact_messages", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   fullName: text("full_name").notNull(),

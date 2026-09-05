@@ -63,7 +63,14 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <span>{ar ? "صُنع بعناية في المملكة العربية السعودية" : "Made with care in Saudi Arabia"}</span>
           <span>{ar ? "شركة الأثر المبتكر · السجل التجاري: 7054298489" : "شركة الأثر المبتكر · Commercial Registration: 7054298489"}</span>
           <a href="mailto:bsm.am2025@outlook.com" dir="ltr">bsm.am2025@outlook.com</a>
-          <a href="tel:0553111551" dir="ltr">0553111551 / 0555025551</a>
+          <span>
+            {ar ? "الدعم: " : "Support: "}
+            <a href="tel:0553111551" dir="ltr">0553111551</a>
+          </span>
+          <span>
+            {ar ? "الأعمال: " : "Business: "}
+            <a href="tel:0555025551" dir="ltr">0555025551</a>
+          </span>
           <span>© 2026 Giftly</span>
         </div>
       </div>

@@ -1,8 +1,11 @@
+import { AndroidInterestForm } from "./AndroidInterestForm";
 import { Locale, SiteFooter, SiteHeader } from "./SiteChrome";
+
+const APP_STORE_URL = process.env.NEXT_PUBLIC_APP_STORE_URL?.trim() || "";
 
 const copy = {
   ar: {
-    eyebrow: "هدايا شخصية تصل لكل مدينة سعودية",
+    eyebrow: "هدايا شخصية، بثقة من البداية للتسليم",
     title: "اطلب أي هدية.",
     titleAccent: "وثق بأنها ستصل.",
     lede:
@@ -14,7 +17,7 @@ const copy = {
     requestTitle: "اجعل مساء الجمعة أحلى لأمي",
     madeFor: "صُنعت خصيصاً لها",
     deliverTo: "التوصيل إلى",
-    location: "جدة · حي الروضة",
+    location: "حي الروضة",
     when: "الموعد",
     date: "الجمعة · ٨:٠٠ مساءً",
     courier: "مندوبتك",
@@ -27,10 +30,10 @@ const copy = {
     processTitle: "أربع لحظات بسيطة. مفاجأة واحدة لا تُنسى.",
     processIntro: "لا قوائم جامدة، ولا رسوم مفاجئة.",
     steps: [
-      ["٠١", "صِف الهدية", "اكتب ما تتخيله، اختر المدينة وحدد موعد التوصيل.", "كيكة شوكولاتة لأمي"],
-      ["٠٢", "وافق على الخطة", "يبحث مندوب موثّق عن الهدية ويرسل لك فاتورة واضحة.", "الكيكة ١٢٠ ر.س · الورد ٤٥ ر.س"],
-      ["٠٣", "ادفع بأمان", "تبقى دفعتك محمية داخل التطبيق بينما يجهز المندوب الهدية.", "١٦٥ ر.س محفوظة بأمان"],
-      ["٠٤", "شاهدها تصل", "صورة عند الباب وتحقق بالموقع قبل تحويل المبلغ للمندوب.", "تم التوصيل في حي الروضة ✓"],
+      ["٠١", "أنشئ طلبك", "اكتب وصف الهدية اللي تتخيلها، اختر المدينة وحدد موعد التوصيل.", "كيكة شوكولاتة لأمي"],
+      ["٠٢", "تعيين مندوب", "يتعين مندوب موثّق لطلبك ويرسل لك فاتورة واضحة بالبنود والرسوم.", "الكيكة ١٢٠ ر.س · الورد ٤٥ ر.س"],
+      ["٠٣", "أكّد الدفع بأمان", "بعد موافقتك على الفاتورة، تبقى دفعتك محمية داخل التطبيق بينما يجهز المندوب الهدية.", "١٦٥ ر.س محفوظة بأمان"],
+      ["٠٤", "التجهيز ثم التسليم", "صورة عند الباب وتحقق بالموقع عند التسليم، وبعدها يتحول المبلغ للمندوب.", "تم التسليم في حي الروضة ✓"],
     ],
     safetyKicker: "لطيفة في فكرتها. آمنة في كل خطوة.",
     safetyTitle: "من تحب ينتظر.",
@@ -59,6 +62,15 @@ const copy = {
       ["↔", "محادثة مستمرة", "عدّل التفاصيل وراجع الفاتورة وتابع طلبك من البداية للنهاية."],
       ["★", "ثقة تكبر مع الوقت", "تقييم متبادل يساعد العملاء والمندوبين المميزين على الظهور."],
     ],
+    testimonialsKicker: "قريباً",
+    testimonialsTitle: "قصص حقيقية من عملاء Giftly",
+    testimonialsIntro: "نجمع الآن أول التجارب الحقيقية بعد الإطلاق. هكذا ستظهر آراء عملائنا هنا.",
+    testimonialsPlaceholderTag: "نص تجريبي",
+    testimonials: [
+      ["مكان اسم العميل", "سيُستبدل هذا النص برأي عميل حقيقي عن تجربته مع Giftly بعد الإطلاق."],
+      ["مكان اسم العميل", "سيُستبدل هذا النص برأي عميل حقيقي عن تجربته مع Giftly بعد الإطلاق."],
+      ["مكان اسم العميل", "سيُستبدل هذا النص برأي عميل حقيقي عن تجربته مع Giftly بعد الإطلاق."],
+    ],
     courierKicker: "دخل مرن يناسب وقتك",
     courierTitle: "تعرف مدينتك؟ اصنع يوم شخص ما.",
     courierText:
@@ -76,17 +88,21 @@ const copy = {
       ["هل يمكنني طلب أي هدية؟", "نعم، اكتب وصف الهدية اللي تتخيلها بلغتك العادية. يؤكد المندوب ما يمكن توفيره ويرسل فاتورة مفصلة قبل الدفع."],
       ["متى يستلم المندوب المبلغ؟", "بعد وصول الهدية وتأكيدها بصورة عند الباب وتحقق بالموقع. حتى ذلك الحين تبقى دفعتك محمية."],
       ["ماذا لو أردت تعديل تفصيل؟", "تواصل مع المندوب داخل التطبيق قبل الشراء. ستراجع دائماً الفاتورة النهائية وتوافق عليها."],
-      ["أين تتوفر Giftly؟", "نبدأ في الرياض وجدة، وسنضيف مدناً سعودية أخرى مع نمو مجتمع المندوبين."],
+      ["هل يمكنني متابعة طلبي أول بأول؟", "نعم، تتابع كل مرحلة داخل التطبيق — من قبول المندوب إلى التجهيز والتسليم — مع محادثة مباشرة معه طوال الوقت."],
     ],
     downloadKicker: "صُمم لأصحاب القلوب",
     downloadTitle: "من تحب يستحق المفاجأة.",
     downloadText: "حمّل Giftly واصنع يومهم الجميل أينما كنت.",
     appleLabel: "حمّل من",
     apple: "App Store",
-    android: "نسخة Android — الإطلاق المتوقع خلال شهر",
+    appleComingSoon: "قريباً على App Store",
+    android: "نسخة Android",
+    androidComingSoon: "الإطلاق المتوقع خلال شهر",
+    androidFormTitle: "كن أول من يعرف",
+    androidFormText: "اترك بريدك أو جوالك وسنبلغك فور توفر Giftly على Android.",
   },
   en: {
-    eyebrow: "Thoughtful gifting across Saudi Arabia",
+    eyebrow: "Thoughtful gifting, trusted from start to delivery",
     title: "Ask for anything.",
     titleAccent: "Trust that it’ll show up.",
     lede:
@@ -98,7 +114,7 @@ const copy = {
     requestTitle: "Make Mom’s Friday sweeter",
     madeFor: "Made just for her",
     deliverTo: "Deliver to",
-    location: "Jeddah · Al Rawdah",
+    location: "Al Rawdah",
     when: "When",
     date: "Friday · 8:00 PM",
     courier: "Your courier",
@@ -111,10 +127,10 @@ const copy = {
     processTitle: "Four simple moments. One thoughtful surprise.",
     processIntro: "No rigid catalog. No stranger to pay blindly. You stay in control at every step.",
     steps: [
-      ["01", "Describe the gift", "Say what you have in mind, choose the city, and set the delivery date.", "A chocolate birthday cake for Mom"],
-      ["02", "Approve the plan", "A verified courier sources it and sends an itemized price for approval.", "Cake 120 · Flowers 45 SAR"],
-      ["03", "Pay, safely", "Your payment stays protected while your courier gets everything ready.", "165 SAR held securely"],
-      ["04", "See it arrive", "A doorstep photo and GPS check confirm delivery before payout.", "Delivered in Al Rawdah ✓"],
+      ["01", "Create your order", "Describe the gift you have in mind, choose the city, and set the delivery date.", "A chocolate birthday cake for Mom"],
+      ["02", "Courier assigned", "A verified courier is assigned to your order and sends an itemized invoice for approval.", "Cake 120 · Flowers 45 SAR"],
+      ["03", "Confirm payment, safely", "Once you approve the invoice, your payment stays protected while your courier gets everything ready.", "165 SAR held securely"],
+      ["04", "Prepared, then delivered", "A doorstep photo and GPS check confirm delivery, then payout releases to your courier.", "Delivered to Al Rawdah ✓"],
     ],
     safetyKicker: "Kind by design. Safe by default.",
     safetyTitle: "Your money waits.",
@@ -143,6 +159,15 @@ const copy = {
       ["↔", "Chat all the way", "Fine-tune details, review the invoice, and stay close throughout."],
       ["★", "Trust that grows", "Two-way ratings help thoughtful customers and reliable couriers stand out."],
     ],
+    testimonialsKicker: "Coming soon",
+    testimonialsTitle: "Real stories from Giftly customers",
+    testimonialsIntro: "We're gathering our first real experiences after launch. Here's how customer reviews will appear here.",
+    testimonialsPlaceholderTag: "Placeholder content",
+    testimonials: [
+      ["Customer name placeholder", "This will be replaced with a real customer's Giftly experience after launch."],
+      ["Customer name placeholder", "This will be replaced with a real customer's Giftly experience after launch."],
+      ["Customer name placeholder", "This will be replaced with a real customer's Giftly experience after launch."],
+    ],
     courierKicker: "A flexible way to earn",
     courierTitle: "Know your city? Make someone’s day.",
     courierText:
@@ -160,14 +185,18 @@ const copy = {
       ["Can I really ask for any kind of gift?", "Yes—describe the thoughtful, legal item you want in plain language. Your courier confirms what they can source and sends an itemized invoice before you pay."],
       ["When does the courier receive my money?", "Only after the gift is delivered and confirmed with doorstep photo and GPS proof. Until then, your payment stays protected."],
       ["What if I need to change a detail?", "Use in-app chat before the courier purchases the items. You will always see and approve the final invoice."],
-      ["Where is Giftly available?", "We’re beginning with Riyadh and Jeddah, with more Saudi cities joining as the courier community grows."],
+      ["Can I follow my order as it happens?", "Yes—track every stage in the app, from courier assignment to preparation and delivery, with live chat the whole way."],
     ],
     downloadKicker: "Made for thoughtful people",
     downloadTitle: "Someone you love is worth the surprise.",
     downloadText: "Download Giftly and make their day—from wherever you are.",
     appleLabel: "Download on the",
     apple: "App Store",
-    android: "Android and Google Play are coming later",
+    appleComingSoon: "Coming soon to the App Store",
+    android: "Android",
+    androidComingSoon: "Launching in about a month",
+    androidFormTitle: "Be the first to know",
+    androidFormText: "Leave your email or phone number and we’ll tell you the moment Giftly is on Android.",
   },
 };
 
@@ -279,14 +308,32 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        {/* TODO: استبدال بشهادات عملاء حقيقية */}
+        <section className="testimonials section-shell" aria-labelledby="testimonials-title">
+          <div className="section-heading compact">
+            <div><span className="kicker">{c.testimonialsKicker}</span><h2 id="testimonials-title">{c.testimonialsTitle}</h2></div>
+            <p>{c.testimonialsIntro}</p>
+          </div>
+          <div className="testimonial-grid">
+            {c.testimonials.map(([name, quote], index) => (
+              <article className="testimonial-card" key={`${name}-${index}`}>
+                <span className="testimonial-placeholder-tag">{c.testimonialsPlaceholderTag}</span>
+                <p className="testimonial-quote">“{quote}”</p>
+                <div className="testimonial-avatar" aria-hidden="true">?</div>
+                <strong className="testimonial-name">{name}</strong>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="courier-section section-shell" id="couriers" aria-labelledby="courier-title">
           <div className="courier-visual" aria-hidden="true">
             <div className="courier-blob" />
             <div className="courier-card-main">
               <div className="courier-head"><span className="courier-avatar big">M</span><span><small>{c.verifiedCourier}</small><strong>{ar ? "ماجد أ." : "Majed A."}</strong></span><i>✓</i></div>
               <div className="nearby-label">{c.nearby}</div>
-              <div className="nearby-request"><span className="nearby-icon">♥</span><span><strong>{c.flowerRequest}</strong><small>{ar ? "٢٫٤ كم · الرياض" : "2.4 km · Riyadh"}</small></span><b>{ar ? "٨٥ ر.س" : "85 SAR"}</b></div>
-              <div className="nearby-request faded"><span className="nearby-icon">✦</span><span><strong>{c.basketRequest}</strong><small>{ar ? "٤٫١ كم · الرياض" : "4.1 km · Riyadh"}</small></span><b>{ar ? "٩٥ ر.س" : "95 SAR"}</b></div>
+              <div className="nearby-request"><span className="nearby-icon">♥</span><span><strong>{c.flowerRequest}</strong><small>{ar ? "٢٫٤ كم" : "2.4 km"}</small></span><b>{ar ? "٨٥ ر.س" : "85 SAR"}</b></div>
+              <div className="nearby-request faded"><span className="nearby-icon">✦</span><span><strong>{c.basketRequest}</strong><small>{ar ? "٤٫١ كم" : "4.1 km"}</small></span><b>{ar ? "٩٥ ر.س" : "95 SAR"}</b></div>
             </div>
             <div className="earnings-pill"><small>{c.week}</small><strong>{ar ? "+ ٦٨٠ ر.س" : "+ 680 SAR"}</strong></div>
           </div>
@@ -306,9 +353,25 @@ export function LandingPage({ locale }: { locale: Locale }) {
           <div className="download-inner">
             <div className="download-burst burst-one" aria-hidden="true">✦</div>
             <div className="download-copy"><span className="kicker light">{c.downloadKicker}</span><h2 id="download-title">{c.downloadTitle}</h2><p>{c.downloadText}</p></div>
-            <div className="download-actions apple-only">
-              <a className="store-button" href="#" aria-label={c.apple}><span className="store-mark" aria-hidden="true">●</span><span><small>{c.appleLabel}</small><strong>{c.apple}</strong></span></a>
-              <div className="android-later"><span className="play-mark" aria-hidden="true" /><span>{c.android}</span></div>
+            <div className="download-actions">
+              {APP_STORE_URL ? (
+                <a className="store-button" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label={c.apple}>
+                  <span className="store-mark" aria-hidden="true">●</span><span><small>{c.appleLabel}</small><strong>{c.apple}</strong></span>
+                </a>
+              ) : (
+                <div className="store-button store-button-disabled" aria-disabled="true">
+                  <span className="store-mark" aria-hidden="true">●</span><span><small>{c.appleLabel}</small><strong>{c.appleComingSoon}</strong></span>
+                </div>
+              )}
+              <div className="android-interest">
+                <div className="android-interest-head">
+                  <span className="play-mark" aria-hidden="true" />
+                  <span><strong>{c.android}</strong><small>{c.androidComingSoon}</small></span>
+                </div>
+                <strong className="android-interest-title">{c.androidFormTitle}</strong>
+                <p>{c.androidFormText}</p>
+                <AndroidInterestForm locale={locale} />
+              </div>
             </div>
           </div>
         </section>

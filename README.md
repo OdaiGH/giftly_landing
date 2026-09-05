@@ -85,6 +85,11 @@ or enforce explicit server-side membership or allowlist checks.
 Use SIWC for account pages, user-specific dashboards, saved records, and write
 actions tied to the current ChatGPT user. Leave public content anonymous.
 
+## Environment Variables
+
+- `NEXT_PUBLIC_APP_STORE_URL`: live App Store listing URL. When unset, the
+  download section shows a disabled "coming soon" state instead of a dead link.
+
 ## Useful Commands
 
 - `npm run dev`: start local development
