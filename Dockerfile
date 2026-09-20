@@ -5,9 +5,12 @@ FROM node:24-bookworm-slim
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci
+
+RUN node --version && npm --version
+RUN npm ci --verbose
 
 COPY . .
+
 RUN npm run build
 
 ENV NODE_ENV=production
