@@ -1,13 +1,10 @@
-# Wrangler's bundled Cloudflare workerd binary needs glibc at runtime.
-# Use Debian slim rather than Alpine (musl) so the binary can start.
-FROM node:24-bookworm-slim
+FROM node:22-bookworm-slim
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
-RUN node --version && npm --version
-RUN npm ci --verbose
+RUN npm install --legacy-peer-deps --no-audit --no-fund
 
 COPY . .
 
